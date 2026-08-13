@@ -1,0 +1,88 @@
+{% load i18n %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block head_title %}{% endblock head_title %}</title>
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="min-h-screen bg-base-200 text-base-content">
+    {% block body %}
+
+    {% if messages %}
+    <div class="mx-auto w-full max-w-lg px-4 pt-6">
+      {% for message in messages %}
+      <div class="alert alert-info mb-3 shadow-sm">
+        <span>{{ message }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="min-h-screen px-4 py-10">
+      <div class="mx-auto w-full max-w-lg">
+        <nav class="mb-8 flex justify-center">
+          <div class="join shadow-sm">
+            {% if user.is_authenticated %}
+
+            {% url 'account_email' as email_url_ %}
+            {% if email_url_ %}
+            <a href="{{ email_url_ }}" class="btn join-item btn-outline">
+              {% trans "Change Email" %}
+            </a>
+            {% endif %}
+
+            {% url 'account_change_password' as change_password_url_ %}
+            {% if change_password_url_ %}
+            <a href="{{ change_password_url_ }}" class="btn join-item btn-outline">
+              {% trans "Change Password" %}
+            </a>
+            {% endif %}
+
+            {% url 'account_logout' as logout_url_ %}
+            {% if logout_url_ %}
+            <a href="{{ logout_url_ }}" class="btn join-item btn-error">
+              {% trans "Sign Out" %}
+            </a>
+            {% endif %}
+
+            {% else %}
+
+            {% url 'account_login' as login_url_ %}
+            {% if login_url_ %}
+            <a href="{{ login_url_ }}" class="btn join-item btn-primary">
+              {% trans "Sign In" %}
+            </a>
+            {% endif %}
+
+            {% url 'account_signup' as signup_url_ %}
+            {% if signup_url_ %}
+            <a href="{{ signup_url_ }}" class="btn join-item btn-outline">
+              {% trans "Sign Up" %}
+            </a>
+            {% endif %}
+
+            {% endif %}
+          </div>
+        </nav>
+
+        {% block content %}
+        {% endblock content %}
+      </div>
+    </div>
+
+    {% endblock body %}
+
+    {% block extra_body %}
+    {% endblock extra_body %}
+  </body>
+</html>

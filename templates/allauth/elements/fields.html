@@ -1,0 +1,21 @@
+{% load allauth %}
+
+<div class="">
+  {% for field in attrs.form %}
+
+  {% element field type=field.field.widget.input_type id=field.id_for_label name=field.html_name value=field.value required=field.field.required disabled=field.field.disabled autocomplete=field.field.widget.autocomplete placeholder=field.field.widget.attrs.placeholder errors=field.errors %}
+
+  {% slot label %}
+  {{ field.label }}
+  {% endslot %}
+
+  {% if field.help_text %}
+  {% slot help_text %}
+  {{ field.help_text }}
+  {% endslot %}
+  {% endif %}
+
+  {% endelement %}
+
+  {% endfor %}
+</div>

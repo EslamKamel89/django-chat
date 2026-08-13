@@ -1,0 +1,10 @@
+{% extends "allauth/layouts/base.html" %}
+
+{% block content %}
+<div class="card border border-base-300 bg-base-100 shadow-xl">
+  <div class="card-body p-6 sm:p-8">
+    {% block entrance_content %}
+    {% endblock entrance_content %}
+  </div>
+</div>
+{% endblock content %}
