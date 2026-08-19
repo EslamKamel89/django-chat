@@ -1,10 +1,30 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
+<div class="min-h-[calc(100vh-4rem)] bg-base-200 py-12 px-4">
+  <div class="mx-auto w-full max-w-4xl">
+    {% include 'partials/rooms-list-header.html' %}
 
-<div class="flex justify-center items-center">
-    <div class="bg-white p-6 rounded-lg w-full lg:w-3/4">
-        <h1 class="text-4xl">Django/HTMX Chatroom</h1>
+    <!-- Room List -->
+    <div class="card border border-base-300 bg-base-100 shadow-xl">
+      <div class="card-body">
+        {% include 'partials/room-list-section-header.html' %}
+        <div class="divider my-2"></div>
+
+        {% if rooms %}
+        <div class="grid gap-3 sm:grid-cols-2">
+          {% for room in rooms %}
+          {% include 'partials/room-card.html'%}
+          {% endfor %}
+        </div>
+
+        {% else %}
+
+        {% include 'partials/rooms-empty-state.html' %}
+
+        {% endif %}
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}

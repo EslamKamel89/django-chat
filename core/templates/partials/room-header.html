@@ -1,0 +1,44 @@
+<!-- Room Header -->
+<header class="flex items-center gap-4 border-b border-base-300 px-5 py-4">
+  <a href="{% url 'index' %}" class="btn btn-circle btn-ghost btn-sm" aria-label="Back to rooms">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      class="size-5"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+    </svg>
+  </a>
+
+  <div
+    class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.8"
+      stroke="currentColor"
+      class="size-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M8.625 9.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm0 0H8.25m5.625 0a.75.75 0 1 1-1.5 0 .75.75 0 1 1-1.5 0Zm0 0h-.375m-5.625 0a.75.75 0 1 1-1.5 0 .75.75 0 1 1 1.5 0Zm0 0H8.25m9.75 0a.75.75 0 1 1-1.5 0 .75.75 0 1 1 1.5 0Zm0 0h-.375M3.75 5.25h16.5A2.25 2.25 0 0 1 22.5 7.5v9a2.25 2.25 0 0 1-2.25 2.25H15l-3 3-3-3H3.75A2.25 2.25 0 0 1 1.5 16.5v-9a2.25 2.25 0 0 1 2.25-2.25Z"
+      />
+    </svg>
+  </div>
+
+  <div class="min-w-0">
+    <h1 class="truncate text-lg font-bold text-base-content">
+      {{ room.name }}
+    </h1>
+    <div class="flex items-center gap-2 text-sm text-base-content/50">
+      <span class="size-2 rounded-full bg-success"></span>
+      <span>Chat room</span>
+    </div>
+  </div>
+</header>

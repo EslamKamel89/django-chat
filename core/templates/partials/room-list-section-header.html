@@ -1,0 +1,12 @@
+<!-- Section Header -->
+<div class="mb-4 flex items-center justify-between">
+  <div>
+    <h2 class="card-title text-2xl">Available Chat Rooms</h2>
+    <p class="mt-1 text-sm text-base-content/60">Choose a room to join the conversation.</p>
+  </div>
+
+  <div class="badge badge-primary badge-lg">
+    {{ rooms|length }}
+    room{{ rooms|length|pluralize }}
+  </div>
+</div>

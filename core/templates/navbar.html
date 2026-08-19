@@ -1,18 +1,23 @@
-  <nav class="navbar bg-base-100">
-    <a class="btn btn-ghost text-xl">Chat Application</a>
+<nav class="navbar border-b border-base-300 bg-base-100 px-4 shadow-sm">
+  <!-- Brand -->
+  <div class="flex-1">
+    <a href="{% url 'index' %}" class="btn btn-ghost text-xl font-bold tracking-tight">
+      <span class="text-primary">Chat</span> Application
+    </a>
+  </div>
+
+  <!-- Navigation -->
+  <div class="flex items-center gap-2">
+    <a href="{% url 'index' %}" class="btn btn-ghost btn-sm"> Rooms </a>
 
     {% if user.is_authenticated %}
-        <!-- User is authenticated: Show Logout button -->
-        <a href="{% url 'account_logout' %}" class="text-gray-800 hover:bg-gray-100 px-4 py-2 rounded-md">
-        Logout
-        </a>
+    <!-- Authenticated user -->
+    <a href="{% url 'account_logout' %}" class="btn btn-outline btn-sm"> Logout </a>
     {% else %}
-        <!-- User is not authenticated: Show Login and Register links -->
-        <a href="{% url 'account_login' %}" class="text-gray-800 hover:bg-gray-100 px-4 py-2 rounded-md">
-        Login
-        </a>
-        <a href="{% url 'account_signup' %}" class="ml-4 text-gray-800 hover:bg-gray-100 px-4 py-2 rounded-md">
-        Register
-        </a>
+    <!-- Guest user -->
+    <a href="{% url 'account_login' %}" class="btn btn-ghost btn-sm"> Login </a>
+
+    <a href="{% url 'account_signup' %}" class="btn btn-primary btn-sm"> Register </a>
     {% endif %}
+  </div>
 </nav>

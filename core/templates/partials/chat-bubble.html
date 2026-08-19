@@ -1,0 +1,19 @@
+<div class="chat chat-start">
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full ring-2 ring-base-100">
+      <img
+        alt="Obi-Wan Kenobi"
+        src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp"
+      />
+    </div>
+  </div>
+
+  <div class="chat-header mb-1 text-xs text-base-content/60">
+    {{ message.user.username }}
+    <time class="ml-1 text-base-content/40">{{message.created_at|timesince }}</time>
+  </div>
+
+  <div class="chat-bubble bg-base-100 text-base-content shadow-sm">{{message.content}}</div>
+
+  <div class="chat-footer mt-1 text-xs text-base-content/40">Delivered</div>
+</div>

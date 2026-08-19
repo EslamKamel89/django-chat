@@ -1,0 +1,16 @@
+<div class="chat chat-end">
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full ring-2 ring-base-100">
+      <img alt="Anakin" src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp" />
+    </div>
+  </div>
+
+  <div class="chat-header mb-1 text-xs text-base-content/60">
+    {{ message.user.username }}
+    <time class="ml-1 text-base-content/40">{{message.created_at|timesince }}</time>
+  </div>
+
+  <div class="chat-bubble bg-primary text-primary-content shadow-sm">{{message.content}}</div>
+
+  <div class="chat-footer mt-1 text-xs text-base-content/40">Seen at 12:46</div>
+</div>

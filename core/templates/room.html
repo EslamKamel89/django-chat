@@ -1,11 +1,28 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
+<div class="min-h-[calc(100vh-4rem)] bg-base-200 px-4 py-6">
+  <div
+    class="mx-auto flex h-[calc(100vh-7rem)] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-base-300 bg-base-100 shadow-xl"
+  >
+    {% include 'partials/room-header.html' %}
 
-<div class="text-center">
+    <!-- Messages -->
+    <main class="flex-1 overflow-y-auto bg-base-200/50 px-4 py-6 sm:px-6">
+      <div id="chat-box" class="mx-auto max-w-3xl space-y-2">
+        {% for message in messages %}
+        {% if message.user == request.user %}
+        {% include 'partials/chat-bubble-mine.html' %}
+        {% else %}
+        {% include 'partials/chat-bubble.html' %}
+        {% endif %}
+        {% empty %}
+        {% include 'partials/chat-empty-state.html' %}
+        {% endfor %}
+      </div>
+    </main>
 
-    <h1 class="text-4xl">{{ room.name }}</h1>
-
+    {% include 'partials/message-input.html' %}
+  </div>
 </div>
-
 {% endblock %}
