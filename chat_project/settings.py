@@ -19,6 +19,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -128,3 +129,6 @@ LOGIN_REDIRECT_URL = "/"
 
 # All auth configurations
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+
+ASGI_APPLICATION = "chat_project.asgi.application"

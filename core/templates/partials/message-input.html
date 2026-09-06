@@ -1,9 +1,12 @@
 <!-- Message Input -->
-<footer class="border-t border-base-300 bg-base-100 p-4">
-  <form class="mx-auto flex max-w-3xl items-end gap-3">
+<footer class="border-t border-base-300 bg-base-100 py-4">
+  <form id="chat-form" class="mx-auto flex max-w-3xl items-end gap-3">
     <div class="flex-1">
       <textarea
-        class="textarea textarea-bordered w-full resize-none"
+        id="chat-message-input"
+        name="message"
+        minlength="2"
+        class="textarea w-full resize-none"
         placeholder="Write a message..."
         rows="1"
       ></textarea>
