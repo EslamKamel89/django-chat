@@ -12,18 +12,14 @@
       class="flex-1 overflow-y-auto bg-base-200/50 px-4 py-1 sm:px-6"
       x-data="{}"
       x-init="
-      setTimeout(()=>{
-        $el.scrollTo({top:$el.scrollHeight , behavior:'smooth'})
-      } , 500)
+      scrollToBottom = () =>$el.scrollTo({top:$el.scrollHeight , behavior:'smooth'})
+      setTimeout(scrollToBottom , 500)
+      document.body.addEventListener('htmx:wsAfterMessage' , scrollToBottom)
       "
     >
       <div id="chat-box" class="mx-auto max-w-3xl space-y-2">
         {% for message in messages %}
-        {% if message.user == request.user %}
-        {% include 'partials/chat-bubble-mine.html' %}
-        {% else %}
-        {% include 'partials/chat-bubble.html' %}
-        {% endif %}
+        {% include 'partials/message.html' %}
         {% empty %}
         {% include 'partials/chat-empty-state.html' %}
         {% endfor %}

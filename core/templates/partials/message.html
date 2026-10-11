@@ -1,0 +1,7 @@
+<div hx-swap-oob="beforeend:#chat-box">
+  {% if message.user == user %}
+  {% include 'partials/chat-bubble-mine.html' %}
+  {% else %}
+  {% include 'partials/chat-bubble.html' %}
+  {% endif %}
+</div>
