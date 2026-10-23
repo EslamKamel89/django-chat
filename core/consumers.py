@@ -18,12 +18,18 @@ class ChatConsumer(WebsocketConsumer):
         if not self.room:
             self.close()
             return
-        print("channel_layer: ", self.channel_layer)
-        print("channel_name: ", self.channel_name)
+        # print("channel_layer: ", self.channel_layer)
+        # print("channel_name: ", self.channel_name)
+        self.room_group_name = f"chat_{self.room_slug}"
+        async_to_sync(self.channel_layer.group_add)(
+            self.room_group_name, self.channel_name
+        )
         self.accept()
 
     def disconnect(self, code):
-        pass
+        async_to_sync(self.channel_layer.group_discard)(
+            self.room_group_name, self.channel_name
+        )
 
     def receive(self, text_data=None, bytes_data=None):
         if text_data is not None:
@@ -38,7 +44,14 @@ class ChatConsumer(WebsocketConsumer):
                     "partials/message.html",
                     {"message": message_model, "user": self.user},
                 )
-                self.send(text_data=html)
+                # self.send(text_data=html)
+                async_to_sync(self.channel_layer.group_send)(
+                    self.room_group_name, {"type": "chat_message", "html": html}
+                )
+
+    def chat_message(self, event):
+        html = event["html"]
+        self.send(text_data=html)
 
     def get_room(self):
         return Room.objects.filter(slug=self.room_slug).first()

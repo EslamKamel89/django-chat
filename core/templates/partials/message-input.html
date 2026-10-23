@@ -5,6 +5,7 @@
     hx-ext="ws"
     ws-connect="/ws/chat/{{ room.slug }}/"
     ws-send
+    hx-on:htmx:ws-after-send="this.reset();document.getElementById('chat-empty-state')?.remove();"
     class="mx-auto flex max-w-3xl items-end gap-3"
   >
     <div class="flex-1">
